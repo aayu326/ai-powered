@@ -14,7 +14,7 @@ app.use(express.json());
 // ==============================================
 // YOUR API KEY
 // ==============================================
-const GEMINI_API_KEY = "AIzaSyABLD6_HA5kPyHu9o9Ld1vpR7G5ViRryB4";
+const GEMINI_API_KEY = "AIzaSyACf8nQc9voTiJ6hbKczUoLCZKaqFdmTvk";
 
 // ==============================================
 // COMPREHENSIVE KNOWLEDGE BASE - IMPROVED
@@ -495,5 +495,6 @@ app.listen(PORT, () => {
   console.log('   ✅ Improved Gemini prompts');
   console.log('   ✅ Added parent communication info\n');
 });
+
 
 
