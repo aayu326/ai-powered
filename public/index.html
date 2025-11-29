@@ -542,14 +542,14 @@
 
     <script>
         // ==============================================
-        // CONFIGURATION - UPDATED TO USE VERCEL DEPLOYMENT!
+        // CONFIGURATION - FIXED API URL (removed double slash)
         // ==============================================
-        const API_URL = 'https://ai-powered-ma3h.vercel.app/';
+        const API_URL = 'https://ai-powered-ma3h.vercel.app/api/chat';
+        const HEALTH_CHECK_URL = 'https://ai-powered-ma3h.vercel.app/api/health';
         
         // ==============================================
         // DOM ELEMENTS
         // ==============================================
-
         const chatToggle = document.getElementById('chatToggle');
         const chatContainer = document.getElementById('chatContainer');
         const chatBubble = document.getElementById('chatBubble');
@@ -607,8 +607,7 @@
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
-                        message: message,
-                        conversationHistory: conversationHistory
+                        message: message
                     })
                 });
 
@@ -648,7 +647,7 @@
                     : 'Sorry, I encountered an error. Please try again.';
                 
                 addMessage(
-                    `${errorMsg}\n\nYou can also contact us directly:\n📞 0135-2776225\n📧 info@vantagehall.org`,
+                    `${errorMsg}\n\nYou can also contact us directly:\n📞 0135-2776225\n📧 info@vantagehall.org\n📱 +91-8191912999`,
                     'bot',
                     true
                 );
@@ -765,18 +764,20 @@
         // ==============================================
         window.addEventListener('load', async () => {
             try {
-                const response = await fetch('https://ai-powered-ma3h.vercel.app//api/health');
+                const response = await fetch(HEALTH_CHECK_URL);
                 if (response.ok) {
                     console.log('✅ Connected to backend successfully!');
+                    const data = await response.json();
+                    console.log('Backend status:', data);
                 } else {
                     console.warn('⚠️ Backend server is not responding properly.');
                 }
             } catch (error) {
-                console.warn('⚠️ Connection test failed. The chatbot may not work properly.');
+                console.error('❌ Connection test failed:', error);
+                console.warn('The chatbot may not work properly. Please check your backend deployment.');
             }
         });
     </script>
 
 </body>
 </html>
-
