@@ -25,7 +25,7 @@ let fetch;
 // ==============================================
 // YOUR API KEY
 // ==============================================
-const GEMINI_API_KEY = "AIzaSyACf8nQc9voTiJ6hbKczUoLCZKaqFdmTvk";
+const GEMINI_API_KEY = "AIzaSyDJW3mKXNG-Xlazs3lU6OU15IEo_UzCmC8";
 
 // ==============================================
 // COMPREHENSIVE KNOWLEDGE BASE
@@ -370,3 +370,4 @@ app.listen(PORT, () => {
 
 // Export for Vercel
 module.exports = app;
+
